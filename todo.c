@@ -37,7 +37,7 @@ task_add:
 
 while( inputforendloop !=0 && numberoftasks <= MAX_TASK)
 {
-
+fflush(stdout);
 puts("\nAlright you can add tasks now\n");
 puts("Provide the name please:\n>");
 fgets(name, 23, stdin);
@@ -61,7 +61,8 @@ task_edit:
 
 
 
-if(numberoftasks == 0){ puts("No tasks insight"); Sleep(1000); goto menu1;}
+if(numberoftasks == 0){ set_color(14);("No tasks insight");         set_color(15);
+    Sleep(1000); goto menu1;}
 else{
 puts("Provide the name of task you wanna modify:\n> ");
 fgets(name2 , 23, stdin);
@@ -84,25 +85,28 @@ while(i<numberoftasks && inloop2!=0)
     }
     i++;
 }
-if(found == 0) {puts("Task non existant or mistyped.\n");Sleep(2500);goto task_edit;}
+if(found == 0) {Sleep(2500);set_color(12);("Task non existant or mistyped.\n");        set_color(15);
+    Sleep(2500);goto task_edit;}
 }
 return;
 
 
 
 task_all_display:
-if(numberoftasks == 0){puts("No tasks insight please add first"); Sleep(2000); goto menu1;}
+
+if(numberoftasks == 0){set_color(14);puts("No tasks insight please add first");        set_color(15);
+    Sleep(2000); goto menu1;}
 
 DISPLAY_ALL_TASKS(&LIST, numberoftasks);
 
-puts("Main menu or finish session?(1/0/other button to go back)");
+puts("Main menu or finish session?(1/0)");
 scanf("%d", new);
 
 switch(new)
 {
     case 1: goto menu1;
     case 0: exit(0);
-    default: goto task_all_display;
+    
 }
 
 
@@ -112,7 +116,7 @@ mark_task_complete_delete:
 found2 = 0;
 puts("Provide the name of the task you wanna mark as done:\n>");
 fgets(name3, 23, stdin);
-if(numberoftasks == 0){puts("No tasks insight please add some tasks first"); Sleep(2000); goto menu1;}
+if(numberoftasks == 0){set_color(14);puts("No tasks insight please add some tasks first");  set_color(15);    Sleep(2000); goto menu1;}
 
 while(v<numberoftasks && inloop3!=0)
 {
@@ -122,7 +126,9 @@ while(v<numberoftasks && inloop3!=0)
 found2 = 1;
        if(LIST[v].DONE == 1)
        {
+        set_color(12);
         puts("Task is already done. ");
+        set_color(15);
         Sleep(1000);
         goto mark_task_complete_delete;
 
@@ -143,7 +149,7 @@ found2 = 1;
     }
     v++;
 }
-if(found2 == 0) {puts("Task non existant or mistyped.\n");Sleep(2500);goto mark_task_complete_delete;}
+if(found2 == 0) {set_color(12);puts("Task non existant or mistyped.\n");set_color(15);Sleep(2500);goto mark_task_complete_delete;}
 
 
 return;
