@@ -25,6 +25,7 @@ typedef struct TASK {
 typedef TASK LIST_TASK[MAX_TASK];
 
 // Function Declarations
+void set_color(int);
 void PRINT_MENU();
 void DISPLAY_TIME_DATE(struct tm t);
 void PRINT_INFO(TASK task);
